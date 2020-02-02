@@ -26,7 +26,7 @@ public class MainEmailPage  {
     public static SelenideElement selectAllLettersButton = $(By.xpath("//span[@class='button2 button2_has-ico button2_status_read button2_pure button2_compact button2_hover-support']"));
     public static SelenideElement setAllLettersAsReadButton = $(By.xpath("//span[@class='button2 button2_has-ico button2_status_read button2_pure button2_compact button2_hover-support']"));
     public static SelenideElement submitButton =  $(By.xpath("//span[@class='button2 button2_base button2_primary button2_fluid button2_hover-support']/span"));
-    public static SelenideElement currentEmailLabel=$(By.id("PH_user-email"));
+    public static SelenideElement currentEmailLabel=$(By.xpath("//i[@id='PH_user-email']"));
     private static SelenideElement inputEmptyValidationError =$(By.className("rowError--O4k-g"));
     private static SelenideElement inputIncorrectValidationError =$(By.xpath("//h1[@class='c2120 c2121 c2139']"));
     private static SelenideElement selectAllItemsButton=$(By.xpath("//span[@data-title-shortcut='Ctrl+A']"));
@@ -51,7 +51,7 @@ public class MainEmailPage  {
 
     }
     public void createNewEmailButtonClick(){
-         createButton.click();
+         createButton.waitUntil(Condition.visible,5000).click();
     }
     public void setToAndSubject(String to, String subject){
         toInput.setValue(to);
@@ -126,7 +126,8 @@ public class MainEmailPage  {
         String subjectValueLocator = String.format("//span[contains(.,'%s')]", subject);
         return $(By.xpath(subjectValueLocator)).isDisplayed();
     }
-    public int getCountUnreadEmails(){
+    public int getCountUnreadEmails() throws InterruptedException {
+        Thread.sleep(2000);
         return unreadEmail.size();
     }
 
@@ -141,7 +142,7 @@ public class MainEmailPage  {
         }
     }
     public String getCurrentEmail(){
-    return currentEmailLabel.shouldBe(Condition.visible).getText();
+    return currentEmailLabel.waitUntil(Condition.visible,5000).getText();
     }
     public int getCountEmails(){
         return mailItemsList.size();

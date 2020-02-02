@@ -70,7 +70,7 @@ public class MailruTests extends BaseTest {
         assertTrue(mainEmailPage.isEmailPresent(subject));
     }
     @Test(description = "Проверка работы кнопки 'Отметить все прочитанными'")
-    public void markAllEmailsAsRead(){
+    public void markAllEmailsAsRead() throws InterruptedException {
         homePage.signIn(emailName,password);
         mainEmailPage.sendEmail(emailAdress,subjectDefault);
         mainEmailPage.markAllLetersAsRead();
