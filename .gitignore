@@ -1,0 +1,6 @@
+/target/*
+/build/*
+mailruTests.iws
+mailruTests.ipr
+mailruTests.iml
+.idea/

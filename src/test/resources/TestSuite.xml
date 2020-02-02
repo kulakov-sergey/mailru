@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test suite" verbose="10">
+
+    <test name="All tests">
+
+        <classes>
+            <class name="com.mycompany.tests.MailruTests" />
+
+        </classes>
+    </test>
+
+
+</suite>
