@@ -13,7 +13,7 @@ public class MailruTests extends BaseTest {
     private String password="quwqh9hd";
     private String subjectDefault="Тестовое письмо";
     private String fileName="2019-04-13_1942.png";
-    private String filePath="C:\\automation\\mailruTests\\"+fileName;
+    private String filePath="C:\\autotests\\mailru\\"+fileName;
     private String textDefault="текст письма";
 
 

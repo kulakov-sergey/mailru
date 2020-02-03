@@ -1,5 +1,6 @@
 package com.mycompany.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -62,7 +63,7 @@ public class SignupPage {
         signupButton.click();
 
         //жмем кнопку Продолжить
-        nextStepButton.click();
+        nextStepButton.waitUntil(Condition.visible,10000).click();
 
         //выбираем темную тему
         darkTheme.click();

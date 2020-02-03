@@ -11,10 +11,4 @@ public class BaseTest {
     MainEmailPage mainEmailPage=new MainEmailPage();
     SignupPage signupPage=new SignupPage();
 
-    private static Properties props = new Properties();
-
-    // get property easy
-    public static String prop(String p) {
-        return (props.getProperty(p));
-    }
 }

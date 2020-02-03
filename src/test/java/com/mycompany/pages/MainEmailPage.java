@@ -22,7 +22,6 @@ public class MainEmailPage  {
     public static SelenideElement ckeditorGrenColorButton= $(By.xpath("//div[@style='background-color: rgb(108, 239, 86);']"));
     public static SelenideElement fileInput= $(By.xpath("//input[@type='file']"));
     public static SelenideElement sendLetterButton = $(By.xpath("//span[contains(@title,'Отправить')]"));
-   // public static SelenideElement stringText = $(By.xpath("//*[contains(text(),'Жирный')]"));
     public static SelenideElement selectAllLettersButton = $(By.xpath("//span[@class='button2 button2_has-ico button2_status_read button2_pure button2_compact button2_hover-support']"));
     public static SelenideElement setAllLettersAsReadButton = $(By.xpath("//span[@class='button2 button2_has-ico button2_status_read button2_pure button2_compact button2_hover-support']"));
     public static SelenideElement submitButton =  $(By.xpath("//span[@class='button2 button2_base button2_primary button2_fluid button2_hover-support']/span"));
@@ -51,7 +50,7 @@ public class MainEmailPage  {
 
     }
     public void createNewEmailButtonClick(){
-         createButton.waitUntil(Condition.visible,5000).click();
+         createButton.waitUntil(Condition.visible,10000).click();
     }
     public void setToAndSubject(String to, String subject){
         toInput.setValue(to);
@@ -106,15 +105,15 @@ public class MainEmailPage  {
     }
     public String getTextFontWeight(String text){
         String textLocator = String.format("//*[contains(text(),'%s')]", text);
-        return $(By.xpath(textLocator)).getCssValue("font-weight");
+        return $(By.xpath(textLocator)).waitUntil(Condition.visible,10000).getCssValue("font-weight");
     }
     public String getTextFontStyle(String text){
         String textLocator = String.format("//*[contains(text(),'%s')]", text);
-        return $(By.xpath(textLocator)).getCssValue("font-style");
+        return $(By.xpath(textLocator)).waitUntil(Condition.visible,10000).getCssValue("font-style");
     }
     public String getTextColor(String text){
         String textLocator = String.format("//*[contains(text(),'%s')]", text);
-        return $(By.xpath(textLocator)).getCssValue("color");
+        return $(By.xpath(textLocator)).waitUntil(Condition.visible,10000).getCssValue("color");
     }
     public boolean isAttachPresent(String fileName){
         //убеждаемся, что файл прикреплен к письму
@@ -124,10 +123,10 @@ public class MainEmailPage  {
     public boolean isEmailPresent(String subject){
         //проверяем, есть ли письмо с определенной темой
         String subjectValueLocator = String.format("//span[contains(.,'%s')]", subject);
-        return $(By.xpath(subjectValueLocator)).isDisplayed();
+        return $(By.xpath(subjectValueLocator)).waitUntil(Condition.visible,4000).isDisplayed();
     }
     public int getCountUnreadEmails() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         return unreadEmail.size();
     }
 
@@ -142,7 +141,7 @@ public class MainEmailPage  {
         }
     }
     public String getCurrentEmail(){
-    return currentEmailLabel.waitUntil(Condition.visible,5000).getText();
+    return currentEmailLabel.waitUntil(Condition.visible,10000).getText();
     }
     public int getCountEmails(){
         return mailItemsList.size();
