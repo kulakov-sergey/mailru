@@ -126,7 +126,7 @@ public class MainEmailPage  {
         return $(By.xpath(subjectValueLocator)).waitUntil(Condition.visible,4000).isDisplayed();
     }
     public int getCountUnreadEmails() throws InterruptedException {
-        Thread.sleep(4000);
+        Thread.sleep(5000);
         return unreadEmail.size();
     }
 

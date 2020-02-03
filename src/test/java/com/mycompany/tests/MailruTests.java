@@ -4,6 +4,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.*;
 
@@ -13,8 +15,11 @@ public class MailruTests extends BaseTest {
     private String password="quwqh9hd";
     private String subjectDefault="Тестовое письмо";
     private String fileName="2019-04-13_1942.png";
-    private String filePath="C:\\autotests\\mailru\\"+fileName;
+   // private String filePath="C:\\autotests\\mailru\\"+fileName;
     private String textDefault="текст письма";
+    private String filename = "2019-04-13_1942.png";
+    private File file = new File(filename);
+    private String path = file.getAbsolutePath();
 
 
     @BeforeMethod
@@ -109,7 +114,7 @@ public class MailruTests extends BaseTest {
         String subject="Тестовое письмо "+Math.random()+"@mail.ru";
         mainEmailPage.setToAndSubject(emailAdress,subject);
         mainEmailPage.fillEmailText(textDefault);
-        mainEmailPage.attachFile(filePath);
+        mainEmailPage.attachFile(path);
         mainEmailPage.sendEmailButtonClick();
         mainEmailPage.closePupup();
         mainEmailPage.openEmail(subject);
